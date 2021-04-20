@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'reactstrap';
 import getQuestions from '../helpers/data/avatarData';
 import './App.scss';
 
@@ -29,9 +31,9 @@ function App() {
       {singleQuestion.question}
       <br />
       <p>{showAnswer ? singleQuestion.correctAnswer : ''}</p>
-      <button onClick={handleClick}>
+      <Button color="info" onClick={handleClick}>
         {showAnswer ? 'Get Another Question' : 'Get Answer'}
-      </button>
+      </Button>
     </div>
   );
 }

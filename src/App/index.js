@@ -35,22 +35,33 @@ function App() {
       {singleQuestion.question}
       <br />
       <p>{showAnswer ? singleQuestion.correctAnswer : ''}</p>
-      <div>
-      <Button id="Popover1" type="button">
-        Launch Popover
-      </Button>
-      <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle} onClick={handleClick}>
-        <PopoverHeader>Possible Answers</PopoverHeader>
-        <PopoverBody>
-          <ul>
-            {singleQuestion.possibleAnsers?.map((pa, i) => <li key={i}>{pa}</li>)}
-          </ul>
-        </PopoverBody>
-      </Popover>
+      {showAnswer ? ''
+        : <div>
+        <Button id="Popover1" type="button">
+          Launch Popover
+        </Button>
+        <Popover
+          placement="bottom"
+          isOpen={popoverOpen}
+          target="Popover1"
+          toggle={toggle}
+          onClick={handleClick}
+          trigger="hover"
+        >
+          <PopoverHeader>Possible Answers</PopoverHeader>
+          <PopoverBody>
+            <ul>
+              {singleQuestion.possibleAnsers?.map((pa, i) => <li key={i}>{pa}</li>)}
+            </ul>
+          </PopoverBody>
+        </Popover>
       </div>
-      <Button color="info" onClick={handleClick}>
+}
+{popoverOpen ? ''
+  : <Button color="info" onClick={handleClick}>
         {showAnswer ? 'Get Another Question' : 'Get Answer'}
       </Button>
+}
     </div>
   );
 }
